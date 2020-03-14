@@ -1,0 +1,5 @@
+// to run, open terminal to db folder, then:
+mysql -u root -p
+<password>
+source schema.sql
+source seeds.sql
