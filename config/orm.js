@@ -1,22 +1,24 @@
-require("./connection.js");
+const connection = require("./connection.js");
 
+// this orm only applies to the burgers table, so we can just hard code that in...
+// orm for database interaction
 const orm = {
-    selectAll: function(table){
-        connection.query("SELECT * FROM ??", table, function(err,res){
+    selectAll: function(cb){
+        connection.query("SELECT * FROM burgers;", function(err,res){
             if (err) throw err;
-            return result;
+            cb(res);
         });
     },
-    insertOne: function(table, item){
-        connection.query("INSERT INTO ??(burger) SET ?", [table,item], function(err,res){
+    insertOne: function(item, cb){
+        connection.query(`INSERT INTO burgers(burger_name) VALUES (?);`, item, function(err,res){
             if (err) throw err;
-            return result;
+            cb(res);
         });
     },
-    updateOne: function(table, item, cond){
-        connection.query("UPDATE ?? SET ? WHERE ?", [table,item,cond], function(err,res){
+    updateOne: function(item, cond, cb){
+        connection.query(`UPDATE burgers SET ? WHERE ${cond};`, item, function(err,res){
             if (err) throw err;
-            return result;
+            cb(res);
         });
     }
 };
