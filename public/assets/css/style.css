@@ -19,11 +19,13 @@ h1 {
 
 #undevoured{
     margin: 4px;
+    min-width: 250px;
     background-color: aquamarine;
 }
 
 #devoured{
     margin: 4px;
+    min-width: 250px;
     background-color: burlywood;
 }
 
